@@ -20,7 +20,16 @@ export const ToggleIconWifi = (props = {}) => {
             execAsync(['bash', '-c', userOptions.asyncGet().apps.network]).catch(print);
             closeEverything();
         },
-        child: NetworkIndicator(),
+        children: [
+            NetworkIndicator(),
+            Widget.Box({
+                className: 'margin-left-10 txt-small',
+                Widget.Label({
+                    className: 'txt-small',
+                    label: 'Internet'
+                })
+            })
+        ],
         setup: (self) => {
             setupCursorHover(self);
             self.hook(Network, button => {
